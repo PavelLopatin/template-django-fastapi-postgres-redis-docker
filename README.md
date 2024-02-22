@@ -1,4 +1,4 @@
-# simpliest django(uvicorn)+postgresql+nginx docker-compose (ready for production and dev)
+# simpliest django(uvicorn)+postgresql+fastapi+redis+nginx docker-compose (ready for production and dev)
 To run:
 `docker-compose up -d`
 
