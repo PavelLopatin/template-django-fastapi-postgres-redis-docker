@@ -1,0 +1,5 @@
+uvicorn==0.27.1
+fastapi==0.109.0
+Django==5.0.2
+psycopg2
+redis==4.6.0

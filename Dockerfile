@@ -1,7 +1,7 @@
-FROM python:3.9.4-slim
+FROM python:3.11.6-slim
 
 # set work directory
-WORKDIR /app
+WORKDIR /src
 
 # set env variables
 ENV PYTHONDONTWRITEBYTECODE 1
@@ -12,8 +12,8 @@ RUN apt-get install -y python3-dev gcc libc-dev libffi-dev
 RUN apt-get -y install libpq-dev gcc
 
 # install dependencies
-COPY requirements.txt .
+COPY src/requirements.txt .
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 # copy project
-COPY . .
+COPY src/. .

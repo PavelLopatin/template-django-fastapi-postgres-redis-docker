@@ -1,3 +1,0 @@
-uvicorn==0.14.0
-Django==3.2.5
-psycopg2
