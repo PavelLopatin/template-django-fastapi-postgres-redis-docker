@@ -2,9 +2,8 @@ import contextlib
 import json
 from typing import Union
 
-from redis import Redis
-from redis.typing import KeyT
 from django.conf import settings
+from redis import Redis
 
 
 class RedisOverride:
@@ -15,12 +14,12 @@ class RedisOverride:
     def __init__(self, host: str, port: int):
         self.redis = Redis(host=host, port=port)
 
-    def set(self, key: KeyT, value: Union[str, dict, list, int]):
+    def set(self, key: str, value: Union[str, dict, list, int]):
         if type(value) is not str:
             value = json.dumps(value)
         self.redis.set(key, value)
 
-    def get(self, key: KeyT, default=None) -> Union[str, dict, list]:
+    def get(self, key: str, default=None) -> Union[str, dict, list]:
         value = self.redis.get(key)
         if value is None:
             return default or None
