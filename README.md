@@ -8,6 +8,6 @@ You can make any changes in code, they will appear automatically. If you want to
 ```
 docker-compose exec app python3 manage.py migrate
 docker-compose exec app python3 manage.py makemigrations
-docker-compose exec app python3 manage.py update_admin # create superuser
+docker-compose exec app python3 manage.py update_admin admin adminpass # create superuser
 ```
 and so on.
