@@ -2,7 +2,6 @@ import contextlib
 import json
 from typing import Union
 
-from django.conf import settings
 from redis import Redis
 
 
@@ -30,7 +29,4 @@ class RedisOverride:
         return value
 
     def delete(self, name: str):
-        return self.redis.delete(name)
-
-
-redis = RedisOverride(settings.REDIS_HOST, settings.REDIS_PORT)
+        self.redis.delete(name)
