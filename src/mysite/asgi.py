@@ -16,7 +16,7 @@ from fastapi.middleware.cors import CORSMiddleware
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mysite.settings")
 application = get_asgi_application()
 
-from application.routers import router
+from application.routers.api import router
 
 
 fastapp = FastAPI()
