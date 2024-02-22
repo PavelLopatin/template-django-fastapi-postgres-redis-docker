@@ -1,14 +1,13 @@
 # simpliest django(uvicorn)+postgresql+nginx docker-compose (ready for production and dev)
-To run in production:
+To run:
 `docker-compose up -d`
 
 Site available on 8000 port.
 
-## DEV
-Run in dev(with hot reload):
-`docker-compose -f docker-compose.yaml -f docker-compose.dev.yaml up -d`
-
 You can make any changes in code, they will appear automatically. If you want to execute something with manage.py use:
-`docker-compose exec app python3 manage.py makemigrations`
-`docker-compose exec app python3 manage.py createsuperuser`
+```
+docker-compose exec app python3 manage.py migrate
+docker-compose exec app python3 manage.py makemigrations
+docker-compose exec app python3 manage.py update_admin # create superuser
+```
 and so on.
