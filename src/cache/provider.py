@@ -18,15 +18,15 @@ class RedisOverride:
             value = json.dumps(value)
         self.redis.set(key, value)
 
-    def get(self, key: str, default=None) -> Union[str, dict, list]:
+    def get(self, key: str, default=None) -> Union[str, dict, int, list, None]:
         value = self.redis.get(key)
         if value is None:
-            return default or None
+            return default
 
         value = value.decode("utf-8")
         with contextlib.suppress(Exception):
             value = json.loads(value)
         return value
 
-    def delete(self, name: str):
-        self.redis.delete(name)
+    def delete(self, key: str):
+        self.redis.delete(key)
