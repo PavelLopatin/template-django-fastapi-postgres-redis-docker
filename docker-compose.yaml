@@ -16,6 +16,7 @@ services:
     command: nginx -g "daemon off;"
     depends_on:
       - app
+      - api
     image: nginx:alpine
     restart: on-failure
     volumes:
@@ -30,10 +31,10 @@ services:
       dockerfile: Dockerfile
     command: bash -c 'while !</dev/tcp/db/5432; do sleep 1; done; python3 manage.py collectstatic --no-input; python3 manage.py migrate; uvicorn mysite.asgi:application --port 8000 --host 0.0.0.0'
     volumes:
-      - ./src/static:/src/static
       - ./src/:/src/
     depends_on:
       - db
+      - redis
     restart: on-failure
     env_file:
       - .env
@@ -47,6 +48,7 @@ services:
       - ./src/:/src/
     depends_on:
       - db
+      - redis
     restart: on-failure
     env_file:
       - .env
